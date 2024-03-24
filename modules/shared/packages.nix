@@ -8,26 +8,36 @@ with pkgs; [
   bash-completion
   bat
   btop
+  codespell
   coreutils
   killall
-  neofetch
+  kubectl
+  k9s
+  lazygit
+  lunarvim
+  nixpkgs-fmt
+  # neofetch
   openssh
-  sqlite
+  packer
+  rustup
+  terraform
+  # sqlite
+  watch
   wget
   zip
 
   # Encryption and security tools
-  age
-  age-plugin-yubikey
+  # age
+  # age-plugin-yubikey
   gnupg
-  libfido2
+  # libfido2
 
   # Cloud-related tools and SDKs
   docker
   docker-compose
 
   # Media-related packages
-  emacs-all-the-icons-fonts
+  # emacs-all-the-icons-fonts
   dejavu_fonts
   ffmpeg
   fd
@@ -56,6 +66,6 @@ with pkgs; [
   zsh-powerlevel10k
 
   # Python packages
-  python39
-  python39Packages.virtualenv # globally install virtualenv
+  # python39
+  # python39Packages.virtualenv # globally install virtualenv
 ]

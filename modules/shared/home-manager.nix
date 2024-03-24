@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
-let name = "%NAME%";
-    user = "%USER%";
-    email = "%EMAIL%"; in
+let name = "Adam Bray";
+    user = "adambray";
+    email = "adam.bray@gmail.com"; in
 {
   # Shared shell configuration
   zsh = {
@@ -35,22 +35,13 @@ let name = "%NAME%";
       # Remove history data we don't want to see
       export HISTIGNORE="pwd:ls:cd"
 
-      # Emacs is my editor
-      export ALTERNATE_EDITOR=""
-      export EDITOR="emacsclient -t"
-      export VISUAL="emacsclient -c -a emacs"
-
-      e() {
-          emacsclient -t "$@"
-      }
-
       # nix shortcuts
       shell() {
           nix-shell '<nixpkgs>' -A "$1"
       }
 
       # Use difftastic, syntax-aware diffing
-      alias diff=difft
+      # alias diff=difft
 
       # Always color ls and group directories
       alias ls='ls --color=auto'
@@ -59,7 +50,6 @@ let name = "%NAME%";
 
   git = {
     enable = true;
-    ignores = [ "*.swp" ];
     userName = name;
     userEmail = email;
     lfs = {
@@ -67,124 +57,32 @@ let name = "%NAME%";
     };
     extraConfig = {
       init.defaultBranch = "main";
-      core = { 
-	    editor = "vim";
-        autocrlf = "input";
+            push = {
+        autoSetupRemote = true;
+      };
+      diff = {
+        algorithm = "histogram";
+      };
+      branch = {
+        sort = "committerdate";
+      };
+      rerere = {
+        enabled = true;
+      };
+      merge = {
+        conflictstyle = "zdiff3";
       };
       pull.rebase = true;
       rebase.autoStash = true;
     };
   };
 
-  vim = {
+   direnv = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ vim-airline vim-airline-themes vim-startify vim-tmux-navigator ];
-    settings = { ignorecase = true; };
-    extraConfig = ''
-      "" General
-      set number
-      set history=1000
-      set nocompatible
-      set modelines=0
-      set encoding=utf-8
-      set scrolloff=3
-      set showmode
-      set showcmd
-      set hidden
-      set wildmenu
-      set wildmode=list:longest
-      set cursorline
-      set ttyfast
-      set nowrap
-      set ruler
-      set backspace=indent,eol,start
-      set laststatus=2
-      set clipboard=autoselect
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
 
-      " Dir stuff
-      set nobackup
-      set nowritebackup
-      set noswapfile
-      set backupdir=~/.config/vim/backups
-      set directory=~/.config/vim/swap
-
-      " Relative line numbers for easy movement
-      set relativenumber
-      set rnu
-
-      "" Whitespace rules
-      set tabstop=8
-      set shiftwidth=2
-      set softtabstop=2
-      set expandtab
-
-      "" Searching
-      set incsearch
-      set gdefault
-
-      "" Statusbar
-      set nocompatible " Disable vi-compatibility
-      set laststatus=2 " Always show the statusline
-      let g:airline_theme='bubblegum'
-      let g:airline_powerline_fonts = 1
-
-      "" Local keys and such
-      let mapleader=","
-      let maplocalleader=" "
-
-      "" Change cursor on mode
-      :autocmd InsertEnter * set cul
-      :autocmd InsertLeave * set nocul
-
-      "" File-type highlighting and configuration
-      syntax on
-      filetype on
-      filetype plugin on
-      filetype indent on
-
-      "" Paste from clipboard
-      nnoremap <Leader>, "+gP
-
-      "" Copy from clipboard
-      xnoremap <Leader>. "+y
-
-      "" Move cursor by display lines when wrapping
-      nnoremap j gj
-      nnoremap k gk
-
-      "" Map leader-q to quit out of window
-      nnoremap <leader>q :q<cr>
-
-      "" Move around split
-      nnoremap <C-h> <C-w>h
-      nnoremap <C-j> <C-w>j
-      nnoremap <C-k> <C-w>k
-      nnoremap <C-l> <C-w>l
-
-      "" Easier to yank entire line
-      nnoremap Y y$
-
-      "" Move buffers
-      nnoremap <tab> :bnext<cr>
-      nnoremap <S-tab> :bprev<cr>
-
-      "" Like a boss, sudo AFTER opening the file to write
-      cmap w!! w !sudo tee % >/dev/null
-
-      let g:startify_lists = [
-        \ { 'type': 'dir',       'header': ['   Current Directory '. getcwd()] },
-        \ { 'type': 'sessions',  'header': ['   Sessions']       },
-        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      }
-        \ ]
-
-      let g:startify_bookmarks = [
-        \ '~/.local/share/src',
-        \ ]
-
-      let g:airline_theme='bubblegum'
-      let g:airline_powerline_fonts = 1
-      '';
-     };
 
   alacritty = {
     enable = true;
@@ -251,24 +149,15 @@ let name = "%NAME%";
     };
   };
 
+  neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
+
   ssh = {
     enable = true;
-
-    extraConfig = lib.mkMerge [
-      ''
-        Host github.com
-          Hostname github.com
-          IdentitiesOnly yes
-      ''
-      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux
-        ''
-          IdentityFile /home/${user}/.ssh/id_github
-        '')
-      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin
-        ''
-          IdentityFile /Users/${user}/.ssh/id_github
-        '')
-    ];
+    controlPath = "none";
   };
 
   tmux = {
@@ -276,8 +165,9 @@ let name = "%NAME%";
     plugins = with pkgs.tmuxPlugins; [
       vim-tmux-navigator
       sensible
-      yank
-      prefix-highlight
+      better-mouse-mode
+      # yank
+      # prefix-highlight
       {
         plugin = power-theme;
         extraConfig = ''
@@ -308,50 +198,112 @@ let name = "%NAME%";
     escapeTime = 10;
     historyLimit = 50000;
     extraConfig = ''
-      # Remove Vim mode delays
-      set -g focus-events on
+            # Some tweaks to the status line
+        set -g status-right "%b %d %Y | %l:%M %p"
+        set -g status-justify centre
+        set -g status-left-length 60
 
-      # Enable full mouse support
-      set -g mouse on
+        # Highlight active window
+        set -g window-status-current-style fg=red,bg=black,bold
 
-      # -----------------------------------------------------------------------------
-      # Key bindings
-      # -----------------------------------------------------------------------------
+        set-option -g renumber-windows on
 
-      # Unbind default keys
-      unbind C-b
-      unbind '"'
-      unbind %
+        # hjkl pane navigation
+        bind h select-pane -L
+        bind j select-pane -D
+        bind k select-pane -U
+        bind l select-pane -R
 
-      # Split panes, vertical or horizontal
-      bind-key x split-window -v
-      bind-key v split-window -h
+        # Enable RGB colour if running in xterm(1)
+        # set-option -sa terminal-overrides ",xterm*:Tc"
 
-      # Move around panes with vim-like bindings (h,j,k,l)
-      bind-key -n M-k select-pane -U
-      bind-key -n M-h select-pane -L
-      bind-key -n M-j select-pane -D
-      bind-key -n M-l select-pane -R
+        # work with upterm
+        set-option -ga update-environment " UPTERM_ADMIN_SOCKET"
 
-      # Smart pane switching with awareness of Vim splits.
-      # This is copy paste from https://github.com/christoomey/vim-tmux-navigator
-      is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-        | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-      bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
-      bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
-      bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
-      bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
-      tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-      if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-        "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-      if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-        "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+        # useful when pairing on different sized screens
+        set-window-option -g window-size smallest
 
-      bind-key -T copy-mode-vi 'C-h' select-pane -L
-      bind-key -T copy-mode-vi 'C-j' select-pane -D
-      bind-key -T copy-mode-vi 'C-k' select-pane -U
-      bind-key -T copy-mode-vi 'C-l' select-pane -R
-      bind-key -T copy-mode-vi 'C-\' select-pane -l
+        # Change the default $TERM to xterm-256color
+        # set -g default-terminal "xterm-256color"
+
+        # No bells at all
+        set -g bell-action none
+
+        # Use focus events
+        set -g focus-events on
+
+        # Keep current path when creating new panes/windows
+        bind '"' split-window -c "#{pane_current_path}"
+        bind % split-window -h -c "#{pane_current_path}"
+        bind c new-window -c "#{pane_current_path}"
+
+        # Use vim keybindings in copy mode
+        setw -g mode-keys vi
+
+        # Setup 'v' to begin selection as in Vim
+        bind-key -T copy-mode-vi v send -X begin-selection
+
+        bind-key -T copy-mode-vi y send -X copy-selection
+        bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+
+        # Update default binding of `Enter` to also use copy-pipe
+        unbind -T copy-mode-vi Enter
+        bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
+
+        # Turn the mouse on
+        set -g mouse on
+        bind-key -T copy-mode-vi MouseDragEnd1Pane send -X copy-pipe "pbcopy"
+
+        # Set window notifications
+        setw -g monitor-activity off
+        set -g visual-activity off
+
+        # reduce esc time for vim
+        set -g escape-time 10
+
+        # Automatically set window title
+        # setw -g automatic-rename
+        set -g pane-border-status top
+        setw -g pane-border-format ' #P #T : #{pane_current_path} '
+
+        # Display pane numbers longer
+        set -g display-panes-time 4000
+
+        # Display status bar messages longer
+        set-option -g display-time 2000
+
+        # Start pane and window numbering at 1 instead of 0
+        setw -g base-index 1
+        setw -g pane-base-index 1
+
+        # pane border colors
+        set -g pane-border-style fg='#31AFD4'
+        set -g pane-active-border-style fg='#FF007F'
+
+        # List of plugins
+        # set -g @plugin 'tmux-plugins/tpm'
+        # set -g @plugin 'christoomey/vim-tmux-navigator'
+        # TODO plugin doesn't currently detect lvim, so doing it manually here:
+        is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+            | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?)(diff)?$'"
+        bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h'  'select-pane -L'
+        bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j'  'select-pane -D'
+        bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k'  'select-pane -U'
+        bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l'  'select-pane -R'
+        tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+        if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+            "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+        if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+            "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+
+        bind-key -T copy-mode-vi 'C-h' select-pane -L
+        bind-key -T copy-mode-vi 'C-j' select-pane -D
+        bind-key -T copy-mode-vi 'C-k' select-pane -U
+        bind-key -T copy-mode-vi 'C-l' select-pane -R
+        bind-key -T copy-mode-vi 'C-\' select-pane -l
+
+      #    # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+      #    run '~/.tmux/plugins/tpm/tpm'
       '';
     };
 }

@@ -3,7 +3,13 @@ _:
 [
   # Development Tools
   "homebrew/cask/docker"
-  "visual-studio-code"
+  "1password-cli"
+  "1password"
+  "beekeeper-studio"
+  "gitkraken"
+  "iterm2"
+  "meld"
+  "warp"
 
   # Communication Tools
   "discord"
@@ -20,7 +26,22 @@ _:
 
   # Productivity Tools
   "raycast"
-
-  # Browsers
+  "bettertouchtool"
+  "disk-inventory-x"
+  "rectangle"
+  "scroll-reverser"
+  "flycut"
   "google-chrome"
+  "google-cloud-sdk"
+  "grandperspective"
+  "hyperkey"
+  "keepingyouawake"
+  "keycastr"
+  "obsidian"
+  "whatsapp"
+  
+  # Browsers
+  "firefox"
+  "google-chrome"
+  "finicky"
 ]
