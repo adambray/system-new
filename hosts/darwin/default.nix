@@ -62,7 +62,7 @@ let user = "adambray"; in
       };
 
       dock = {
-        autohide = false;
+        autohide = true;
         show-recents = false;
         launchanim = true;
         orientation = "bottom";
@@ -75,6 +75,7 @@ let user = "adambray"; in
 
       trackpad = {
         Clicking = true;
+        Dragging = true;
         TrackpadThreeFingerDrag = true;
       };
     };

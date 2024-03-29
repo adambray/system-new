@@ -68,12 +68,12 @@ in
     { path = "/Applications/Slack.app/"; }
     { path = "/System/Applications/Messages.app/"; }
     # { path = "/System/Applications/Facetime.app/"; }
-    { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
+    # { path = "${pkgs.alacritty}/Applications/Alacritty.app/"; }
     { path = "/System/Applications/Music.app/"; }
-    { path = "/System/Applications/News.app/"; }
+    # { path = "/System/Applications/News.app/"; }
     { path = "/System/Applications/Photos.app/"; }
     # { path = "/System/Applications/Photo Booth.app/"; }
-    { path = "/System/Applications/TV.app/"; }
+    # { path = "/System/Applications/TV.app/"; }
     { path = "/System/Applications/Home.app/"; }
     # {
     #   path = toString myEmacsLauncher;
