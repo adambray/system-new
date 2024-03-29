@@ -178,7 +178,7 @@ let name = "Adam Bray";
   tmux = {
     enable = true;
     plugins = with pkgs.tmuxPlugins; [
-      vim-tmux-navigator
+      # vim-tmux-navigator
       sensible
       better-mouse-mode
       # yank
@@ -189,17 +189,17 @@ let name = "Adam Bray";
       #      set -g @tmux_power_theme 'gold'
       #   '';
       # }
-      # {
-      #   plugin = resurrect; # Used by tmux-continuum
+      {
+        plugin = resurrect; # Used by tmux-continuum
 
-      #   # Use XDG data directory
-      #   # https://github.com/tmux-plugins/tmux-resurrect/issues/348
-      #   extraConfig = ''
-      #     set -g @resurrect-dir '$HOME/.cache/tmux/resurrect'
-      #     set -g @resurrect-capture-pane-contents 'on'
-      #     set -g @resurrect-pane-contents-area 'visible'
-      #   '';
-      # }
+        # Use XDG data directory
+        # https://github.com/tmux-plugins/tmux-resurrect/issues/348
+        extraConfig = ''
+          set -g @resurrect-dir '$HOME/.cache/tmux/resurrect'
+          set -g @resurrect-capture-pane-contents 'on'
+          set -g @resurrect-pane-contents-area 'visible'
+        '';
+      }
       {
         plugin = continuum;
         extraConfig = ''
@@ -208,10 +208,10 @@ let name = "Adam Bray";
         '';
       }
     ];
-    terminal = "screen-256color";
+    # terminal = "screen-256color";
     # prefix = "C-x";
-    escapeTime = 10;
-    historyLimit = 50000;
+    # escapeTime = 10;
+    # historyLimit = 50000;
     extraConfig = ''
             # Some tweaks to the status line
         set -g status-right "%b %d %Y | %l:%M %p"
