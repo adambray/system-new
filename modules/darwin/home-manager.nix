@@ -45,12 +45,19 @@ in
     useGlobalPkgs = true;
     users.${user} = { pkgs, config, lib, ... }:{
       home = {
+        sessionVariables = {
+          SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";
+        };
+
         enableNixpkgsReleaseCheck = false;
         packages = pkgs.callPackage ./packages.nix {};
         file = lib.mkMerge [
           sharedFiles
           additionalFiles
-          # { "emacs-launcher.command".source = myEmacsLauncher; }
+          { ".1password/agent.sock" = {
+            source = config.lib.file.mkOutOfStoreSymlink
+              "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+          }; }
         ];
         stateVersion = "23.11";
       };

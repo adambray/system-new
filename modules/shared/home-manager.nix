@@ -55,6 +55,12 @@ let name = "Adam Bray";
     lfs = {
       enable = true;
     };
+    signing = {
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDYPlWUM3LaYEP8hKUWCaixu6X+yNq96v1YIC9Diu+M2";
+      signByDefault = true;
+    };
+
+
     extraConfig = {
       init.defaultBranch = "main";
             push = {
@@ -74,6 +80,10 @@ let name = "Adam Bray";
       };
       pull.rebase = true;
       rebase.autoStash = true;
+      gpg = { format = "ssh"; };
+      "gpg \"ssh\"" = lib.mkIf pkgs.stdenv.isDarwin {
+        program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      };
     };
   };
 
@@ -158,6 +168,11 @@ let name = "Adam Bray";
   ssh = {
     enable = true;
     controlPath = "none";
+    matchBlocks."github.com" = {
+      extraOptions = {
+        IdentityAgent = "~/.1password/agent.sock";
+      };
+    };
   };
 
   tmux = {

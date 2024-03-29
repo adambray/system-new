@@ -6,6 +6,12 @@ let
   xdg_stateHome  = "${config.users.users.${user}.home}/.local/state"; in
 {
 
+  # ".1password/agent.sock" = {
+  #   source = config.lib.file.mkOutOfStoreSymlink
+  #     "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+  # };
+
+
   # Raycast script so that "Run Emacs" is available and uses Emacs daemon
   # "${xdg_dataHome}/bin/emacsclient" = {
   #   executable = true;
