@@ -31,7 +31,6 @@ let user = "adambray"; in
     '';
   };
 
-
   # Turn off NIX_PATH warnings now that we're using flakes
   system.checks.verifyNixPath = false;
 
@@ -81,8 +80,6 @@ let user = "adambray"; in
     };
 
     # keyboard = {
-      # enableKeyMapping = true;
-      # remapCapsLockToControl = true;
     # };
   };
 }
