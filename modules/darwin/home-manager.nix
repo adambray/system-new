@@ -68,6 +68,8 @@ in
     };
   };
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   # Fully declarative dock using the latest from Nix Store
   local.dock.enable = true;
   local.dock.entries = [
@@ -79,14 +81,9 @@ in
     { path = "/System/Applications/TV.app/"; }
     { path = "/System/Applications/Home.app/"; }
     {
-      path = "${config.users.users.${user}.home}/.local/share/";
+      path = "${config.users.users.${user}.home}/Downloads";
       section = "others";
-      options = "--sort name --view grid --display folder";
-    }
-    {
-      path = "${config.users.user.${user}.home}/.local/share/downloads";
-      section = "others";
-      options = "--sort name --view grid --display stack";
+      options = "--sort dateadded --view fan --display folder";
     }
   ];
 

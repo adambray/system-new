@@ -20,6 +20,14 @@ let name = "Adam Bray";
         file = "p10k.zsh";
       }
     ];
+    shellAliases =
+      {
+        update = ''
+          cd ~/.dl-nix-config/ \
+            && nix run .#build-switch \
+            && exec $SHELL
+        '';
+      };
 
     initExtraFirst = ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
@@ -32,9 +40,6 @@ let name = "Adam Bray";
       export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
       export PATH=$HOME/.local/share/bin:$PATH
 
-      # Remove history data we don't want to see
-      export HISTIGNORE="pwd:ls:cd"
-
       # nix shortcuts
       shell() {
           nix-shell '<nixpkgs>' -A "$1"
@@ -46,6 +51,12 @@ let name = "Adam Bray";
       # Always color ls and group directories
       alias ls='ls --color=auto'
     '';
+    
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "miloshadzic";
+    };
   };
 
   git = {
@@ -183,12 +194,12 @@ let name = "Adam Bray";
       better-mouse-mode
       # yank
       # prefix-highlight
-      # {
-      #   plugin = power-theme;
-      #   extraConfig = ''
-      #      set -g @tmux_power_theme 'gold'
-      #   '';
-      # }
+      {
+        plugin = power-theme;
+        extraConfig = ''
+           set -g @tmux_power_theme 'gold'
+        '';
+      }
       {
         plugin = resurrect; # Used by tmux-continuum
 
@@ -213,7 +224,7 @@ let name = "Adam Bray";
     # escapeTime = 10;
     # historyLimit = 50000;
     extraConfig = ''
-            # Some tweaks to the status line
+        # Some tweaks to the status line
         set -g status-right "%b %d %Y | %l:%M %p"
         set -g status-justify centre
         set -g status-left-length 60
