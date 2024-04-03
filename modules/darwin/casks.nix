@@ -44,4 +44,11 @@ _:
   "firefox"
   "google-chrome"
   "finicky"
+
+  # Work
+  "amazon-workspaces"
+  "hex-fiend"
+  "tandem"
+  "dbvisualizer"
+  "tuple"
 ]
