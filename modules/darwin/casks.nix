@@ -39,6 +39,7 @@ _:
   "keycastr"
   "obsidian"
   "whatsapp"
+  "bartender"
   
   # Browsers
   "firefox"
