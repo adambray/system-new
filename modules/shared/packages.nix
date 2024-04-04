@@ -2,13 +2,12 @@
 
 with pkgs; [
   # General packages for development and system management
-  # alacritty
   aspell
   aspellDicts.en
   bash-completion
   bat
   btop
-  codespell
+  # codespell
   coreutils
   killall
   kubectl
@@ -16,14 +15,14 @@ with pkgs; [
   lazygit
   nixpkgs-fmt
   # neofetch
-  openssh
-  packer
+  # openssh
+  # packer
   rustup
   terraform
   # sqlite
   watch
   wget
-  zip
+  # zip
 
   # Encryption and security tools
   # age
@@ -37,34 +36,31 @@ with pkgs; [
 
   # Media-related packages
   dejavu_fonts
-  ffmpeg
+  # ffmpeg
   fd
-  font-awesome
-  hack-font
-  noto-fonts
-  noto-fonts-emoji
-  meslo-lgs-nf
+  # font-awesome
+  # hack-font
+  # noto-fonts
+  # noto-fonts-emoji
+  # meslo-lgs-nf
   (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
 
   # Node.js development tools
-  nodePackages.npm # globally install npm
-  nodePackages.prettier
-  nodejs
+  # nodePackages.npm # globally install npm
+  # nodePackages.prettier
+  # nodejs
 
   # Text and terminal utilities
   htop
-  hunspell
-  iftop
+  # hunspell
+  # iftop
   jetbrains-mono
   jq
   ripgrep
   tree
   tmux
-  unrar
-  unzip
+  # unrar
+  # unzip
   zsh-powerlevel10k
 
-  # Python packages
-  python39
-  # python39Packages.virtualenv # globally install virtualenv
 ]

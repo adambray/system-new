@@ -10,6 +10,7 @@ _:
   "iterm2"
   "meld"
   "warp"
+  "intellij-idea-ce"
 
   # Communication Tools
   "discord"

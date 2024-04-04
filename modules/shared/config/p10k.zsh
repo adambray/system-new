@@ -20,7 +20,6 @@
       vcs                       # git status
       context                   # user@host
       command_execution_time    # previous command duration
-      virtualenv                # python virtual environment
       prompt_char               # prompt symbol
   )
 
