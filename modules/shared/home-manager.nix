@@ -39,6 +39,8 @@ let name = "Adam Bray";
       export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
       export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
       export PATH=$HOME/.local/share/bin:$PATH
+      export PATH=$HOME/Library/Python/3.9/bin:$PATH
+      export PATH=$HOME/.local/bin/:$PATH
 
       # nix shortcuts
       shell() {
