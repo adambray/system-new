@@ -21,7 +21,10 @@ in
   homebrew = {
     enable = true;
     casks = pkgs.callPackage ./casks.nix {};
-    brews = ["node"];
+    brews = [
+      "node"
+      "gettext"
+    ];
     # These app IDs are from using the mas CLI app
     # mas = mac app store
     # https://github.com/mas-cli/mas

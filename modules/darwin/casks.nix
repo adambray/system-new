@@ -53,4 +53,5 @@ _:
   "tandem"
   "dbvisualizer"
   "tuple"
+  "dbeaver-community"
 ]

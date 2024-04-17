@@ -41,6 +41,7 @@ let name = "Adam Bray";
       export PATH=$HOME/.local/share/bin:$PATH
       export PATH=$HOME/Library/Python/3.9/bin:$PATH
       export PATH=$HOME/.local/bin/:$PATH
+      export PATH="/Applications/IntelliJ IDEA CE.app/Contents/MacOS":$PATH
 
       # nix shortcuts
       shell() {

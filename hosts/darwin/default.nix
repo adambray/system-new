@@ -13,11 +13,12 @@ let user = "adambray"; in
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+  nixpkgs.config.allowUnfree = true;
+
   # Setup user, packages, programs
   nix = {
     package = pkgs.nixUnstable;
     settings.trusted-users = [ "@admin" "${user}" ];
-
     gc = {
       user = "root";
       automatic = true;
