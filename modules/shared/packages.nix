@@ -19,6 +19,7 @@ with pkgs; [
   # packer
   rustup
   terraform
+  talosctl
   # sqlite
   watch
   wget

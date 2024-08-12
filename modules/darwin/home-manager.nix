@@ -24,6 +24,7 @@ in
     brews = [
       "node"
       "gettext"
+      "nmap"
     ];
     # These app IDs are from using the mas CLI app
     # mas = mac app store
