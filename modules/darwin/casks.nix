@@ -41,6 +41,9 @@ _:
   "obsidian"
   "whatsapp"
   "bartender"
+  "shortcat"
+  "notion"
+  "tailscale"
   
   # Browsers
   "firefox"
