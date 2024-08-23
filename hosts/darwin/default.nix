@@ -17,7 +17,7 @@ let user = "adambray"; in
 
   # Setup user, packages, programs
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nix;
     settings.trusted-users = [ "@admin" "${user}" ];
     gc = {
       user = "root";
@@ -38,9 +38,6 @@ let user = "adambray"; in
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
   ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
-
-  # Enable fonts dir
-  fonts.fontDir.enable = true;
 
   system = {
     stateVersion = 4;

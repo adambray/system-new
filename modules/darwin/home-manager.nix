@@ -20,11 +20,17 @@ in
 
   homebrew = {
     enable = true;
+    onActivation.cleanup = "uninstall";
+    
     casks = pkgs.callPackage ./casks.nix {};
+    
     brews = [
       "node"
       "gettext"
       "nmap"
+      "azure-cli"
+      "gh"
+      "denisidoro/tools/docpars"
     ];
     # These app IDs are from using the mas CLI app
     # mas = mac app store

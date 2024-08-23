@@ -24,6 +24,7 @@ with pkgs; [
   watch
   wget
   # zip
+  sqlcmd
 
   # Encryption and security tools
   # age

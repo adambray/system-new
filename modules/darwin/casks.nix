@@ -8,9 +8,12 @@ _:
   "beekeeper-studio"
   "gitkraken"
   "iterm2"
-  "meld"
+#  "meld"
   "warp"
   "intellij-idea-ce"
+  "visual-studio-code"
+  "dotnet"
+  "rider"
 
   # Communication Tools
   "discord"
