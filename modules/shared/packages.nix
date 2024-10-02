@@ -25,6 +25,8 @@ with pkgs; [
   wget
   # zip
   sqlcmd
+  fasd
+  nix-prefetch-git
 
   # Encryption and security tools
   # age

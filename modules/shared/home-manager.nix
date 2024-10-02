@@ -23,7 +23,8 @@ let name = "Adam Bray";
     shellAliases =
       {
         update = ''
-          cd ~/.dl-nix-config/ \
+          cd ~/workspace/system-new/ \
+            && rm ~/.ssh/config \
             && nix run .#build-switch \
             && exec $SHELL
         '';
@@ -42,12 +43,19 @@ let name = "Adam Bray";
       export PATH=$HOME/Library/Python/3.9/bin:$PATH
       export PATH=$HOME/.local/bin/:$PATH
       export PATH="/Applications/IntelliJ IDEA CE.app/Contents/MacOS":$PATH
+      export PATH="/Applications/Rider.app/Contents/MacOS":$PATH
+      export PATH="/Applications/Webstorm.app/Contents/MacOS":$PATH
 
+      # Some MO repos use this env var to enable flakes via direnv
+      export AUTO_ENABLE_FLAKES=true
+      
       # nix shortcuts
       shell() {
           nix-shell '<nixpkgs>' -A "$1"
       }
 
+      eval "$(fasd --init auto)"
+      
       # Use difftastic, syntax-aware diffing
       # alias diff=difft
 

@@ -14,6 +14,7 @@ _:
   "visual-studio-code"
   "dotnet"
   "rider"
+  "webstorm"
 
   # Communication Tools
   "discord"

@@ -97,7 +97,7 @@
                   "homebrew/homebrew-bundle" = homebrew-bundle;
                   "denisidoro/tools" = homebrew-denisidoro-tools;
                 };
-                mutableTaps = false;
+                mutableTaps = true;
                 autoMigrate = true;
               };
             }
