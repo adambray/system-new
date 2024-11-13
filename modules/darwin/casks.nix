@@ -6,9 +6,7 @@ _:
   "1password-cli"
   "1password"
   "beekeeper-studio"
-  "gitkraken"
   "iterm2"
-#  "meld"
   "warp"
   "intellij-idea"
   "visual-studio-code"
@@ -17,7 +15,6 @@ _:
   "webstorm"
 
   # Communication Tools
-  "discord"
   "notion"
   "slack"
   "telegram"

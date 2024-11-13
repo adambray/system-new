@@ -23,7 +23,7 @@ in
     onActivation.cleanup = "uninstall";
     
     casks = pkgs.callPackage ./casks.nix {};
-    
+    taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
       "node"
       "gettext"

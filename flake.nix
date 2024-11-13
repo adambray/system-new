@@ -92,7 +92,7 @@
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-bundle" = homebrew-bundle;
                 };
-                mutableTaps = true;
+                mutableTaps = false;
                 autoMigrate = false;
               };
             }
