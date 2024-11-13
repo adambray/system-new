@@ -10,7 +10,7 @@ _:
   "iterm2"
 #  "meld"
   "warp"
-  "intellij-idea-ce"
+  "intellij-idea"
   "visual-studio-code"
   "dotnet"
   "rider"

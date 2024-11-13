@@ -142,22 +142,6 @@
         "type": "github"
       }
     },
-    "homebrew-denisidoro-tools": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1609791836,
-        "narHash": "sha256-YTalO60sN8ZCU9tQZN+NGBe38j9WTBr3OGnjbwMbOAU=",
-        "owner": "denisidoro",
-        "repo": "homebrew-tools",
-        "rev": "10bddec1cd9e89126f82826c8d9dacbc2de28e85",
-        "type": "github"
-      },
-      "original": {
-        "owner": "denisidoro",
-        "repo": "homebrew-tools",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
@@ -266,7 +250,6 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
-        "homebrew-denisidoro-tools": "homebrew-denisidoro-tools",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_4"
       }

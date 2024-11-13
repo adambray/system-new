@@ -30,7 +30,6 @@ in
       "nmap"
       "azure-cli"
       "gh"
-      "denisidoro/tools/docpars"
     ];
     # These app IDs are from using the mas CLI app
     # mas = mac app store
