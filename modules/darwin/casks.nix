@@ -40,4 +40,7 @@ _:
   "hex-fiend"
   "tandem"
   "tuple"
+
+  # Games
+  "streetpea/streetpea/chiaki-ng"
 ]
