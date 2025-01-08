@@ -9,10 +9,12 @@ with pkgs; [
   btop
   # codespell
   coreutils
+  go
   killall
   kubectl
   k9s
   lazygit
+  nix-tree
   nixpkgs-fmt
   # neofetch
   # openssh

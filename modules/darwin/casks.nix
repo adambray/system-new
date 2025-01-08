@@ -15,6 +15,7 @@ _:
   "webstorm"
 
   # Communication Tools
+  "discord"
   "notion"
   "slack"
   "telegram"

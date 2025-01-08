@@ -36,6 +36,8 @@ let name = "Adam Bray";
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
       fi
 
+      export GOPATH=$HOME/go
+
       # Define variables for directories
       export PATH=$HOME/.pnpm-packages/bin:$HOME/.pnpm-packages:$PATH
       export PATH=$HOME/.npm-packages/bin:$HOME/bin:$PATH
@@ -45,6 +47,9 @@ let name = "Adam Bray";
       export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS":$PATH
       export PATH="/Applications/Rider.app/Contents/MacOS":$PATH
       export PATH="/Applications/Webstorm.app/Contents/MacOS":$PATH
+      export PATH=$GOPATH/bin:$PATH
+
+      export EDITOR=nvim
 
       # Some MO repos use this env var to enable flakes via direnv
       export AUTO_ENABLE_FLAKES=true
