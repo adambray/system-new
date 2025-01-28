@@ -36,6 +36,9 @@ let name = "Adam Bray";
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
       fi
 
+      export LANG=en_US.UTF-8
+      export LC_ALL=en_US.UTF-8
+
       export GOPATH=$HOME/go
 
       # Define variables for directories
@@ -60,9 +63,6 @@ let name = "Adam Bray";
       }
 
       eval "$(fasd --init auto)"
-      
-      # Use difftastic, syntax-aware diffing
-      # alias diff=difft
 
       # Always color ls and group directories
       alias ls='ls --color=auto'
