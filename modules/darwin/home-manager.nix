@@ -31,6 +31,7 @@ in
       "azure-cli"
       "gh"
       "git-duet/tap/git-duet"
+      "pdm"
     ];
     # These app IDs are from using the mas CLI app
     # mas = mac app store
