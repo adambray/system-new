@@ -7,6 +7,7 @@ with pkgs; [
   bash-completion
   bat
   btop
+  exiftool
   # codespell
   coreutils
   go

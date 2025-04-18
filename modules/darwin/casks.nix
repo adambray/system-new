@@ -42,5 +42,5 @@ _:
   "tuple"
 
   # Games
-  "streetpea/streetpea/chiaki-ng"
+#  "streetpea/streetpea/chiaki-ng"
 ]
