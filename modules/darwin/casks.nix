@@ -35,7 +35,6 @@ _:
   "scroll-reverser"
   "flycut"
   "google-chrome"
-  "google-cloud-sdk"
   "grandperspective"
   "hyperkey"
   "keepingyouawake"

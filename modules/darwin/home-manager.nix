@@ -74,7 +74,7 @@ in
     };
   };
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   # Fully declarative dock using the latest from Nix Store
   local.dock.enable = true;
