@@ -77,8 +77,10 @@ in
   security.pam.services.sudo_local.touchIdAuth = true;
 
   # Fully declarative dock using the latest from Nix Store
-  local.dock.enable = true;
-  local.dock.entries = [
+ local.dock = {
+    enable   = true;
+    username = user;
+    entries  = [
     { path = "/Applications/Slack.app/"; }
     { path = "/Applications/Firefox.app/"; }
     { path = "/System/Applications/Messages.app/"; }
@@ -90,7 +92,7 @@ in
       path = "${config.users.users.${user}.home}/Downloads";
       section = "others";
       options = "--sort dateadded --view fan --display folder";
-    }
-  ];
-
+      }
+    ];
+  };
 }

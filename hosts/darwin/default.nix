@@ -31,16 +31,15 @@ let user = "adambray"; in
 #    '';
   };
 
-  # Turn off NIX_PATH warnings now that we're using flakes
-  system.checks.verifyNixPath = false;
-
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
   ] ++ (import ../../modules/shared/packages.nix { inherit pkgs; });
 
   system = {
+    # Turn off NIX_PATH warnings now that we're using flakes
+    checks.verifyNixPath = false;
+    primaryUser = user;
     stateVersion = 4;
-
     defaults = {
       NSGlobalDomain = {
         AppleShowAllExtensions = true;
