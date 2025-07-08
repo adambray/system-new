@@ -93,7 +93,7 @@
                         "homebrew/homebrew-core" = homebrew-core;
                         "homebrew/homebrew-cask" = homebrew-cask;
                         "homebrew/homebrew-bundle" = homebrew-bundle;
-                        "git-duet/tap" = git-duet;
+                        "git-duet/homebrew-tap" = git-duet;
                       };
                       mutableTaps = false;
                       autoMigrate = true;
