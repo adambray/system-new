@@ -9,20 +9,12 @@ _:
   "iterm2"
   "warp"
   "intellij-idea"
-  "visual-studio-code"
-  "dotnet"
-  "rider"
-  "webstorm"
+  "cursor"
 
   # Communication Tools
-  "discord"
   "notion"
   "slack"
-  "telegram"
   "zoom"
-
-  # Utility Tools
-  "syncthing"
 
   # Entertainment Tools
   "vlc"
@@ -43,7 +35,6 @@ _:
   "whatsapp"
   "bartender"
   "shortcat"
-  "notion"
   "tailscale"
   
   # Browsers
