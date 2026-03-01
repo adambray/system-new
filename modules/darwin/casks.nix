@@ -2,7 +2,6 @@ _:
 
 [
   # Development Tools
-  "homebrew/cask/docker"
   "1password-cli"
   "1password"
   "beekeeper-studio"
