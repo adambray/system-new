@@ -30,7 +30,7 @@ let name = "Adam Bray";
         '';
       };
     profileExtra = ''eval "$(/opt/homebrew/bin/brew shellenv)"'';
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       if [[ -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ]]; then
         . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
         . /nix/var/nix/profiles/default/etc/profile.d/nix.sh
@@ -77,8 +77,6 @@ let name = "Adam Bray";
 
   git = {
     enable = true;
-    userName = name;
-    userEmail = email;
     lfs = {
       enable = true;
     };
@@ -87,8 +85,9 @@ let name = "Adam Bray";
       signByDefault = true;
     };
 
-
-    extraConfig = {
+    settings = {
+      user.name = name;
+      user.email = email;
       init.defaultBranch = "main";
             push = {
         autoSetupRemote = true;
@@ -194,7 +193,8 @@ let name = "Adam Bray";
 
   ssh = {
     enable = true;
-    controlPath = "none";
+    enableDefaultConfig = false;
+    matchBlocks."*".controlPath = "none";
     matchBlocks."github.com" = {
       extraOptions = {
         IdentityAgent = "~/.1password/agent.sock";

@@ -28,6 +28,7 @@ _:
   "keepingyouawake"
   "keycastr"
   "bartender"
+  "tailscale"
 
   # Browsers
   "firefox"
