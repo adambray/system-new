@@ -28,7 +28,7 @@ _:
   "keepingyouawake"
   "keycastr"
   "bartender"
-  "tailscale"
+  "tailscale-app"
 
   # Browsers
   "firefox"
