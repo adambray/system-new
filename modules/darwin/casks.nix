@@ -4,7 +4,6 @@ _:
   # Development Tools
   "1password-cli"
   "1password"
-  "beekeeper-studio"
   "iterm2"
   "warp"
   "intellij-idea"
@@ -19,23 +18,17 @@ _:
   "vlc"
 
   # Productivity Tools
-  "raycast"
   "bettertouchtool"
   "disk-inventory-x"
   "rectangle"
   "scroll-reverser"
   "flycut"
   "google-chrome"
-  "grandperspective"
   "hyperkey"
   "keepingyouawake"
   "keycastr"
-  "obsidian"
-  "whatsapp"
   "bartender"
-  "shortcat"
-  "tailscale"
-  
+
   # Browsers
   "firefox"
   "google-chrome"
@@ -45,7 +38,5 @@ _:
   "amazon-workspaces"
   "hex-fiend"
   "tandem"
-  "dbvisualizer"
   "tuple"
-  "dbeaver-community"
 ]

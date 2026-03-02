@@ -28,6 +28,7 @@ with pkgs; [
   # zip
   sqlcmd
   fasd
+  gh
   nix-prefetch-git
 
   # Encryption and security tools

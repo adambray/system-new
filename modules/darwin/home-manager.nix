@@ -21,7 +21,8 @@ in
   homebrew = {
     enable = true;
     onActivation.cleanup = "uninstall";
-    
+    onActivation.upgrade = true;
+
     casks = pkgs.callPackage ./casks.nix {};
     taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
@@ -29,7 +30,6 @@ in
       "gettext"
       "nmap"
       "azure-cli"
-      "gh"
       "git-duet/tap/git-duet"
       "pdm"
     ];
@@ -41,7 +41,7 @@ in
     # $ mas search <app name>
     #
     masApps = {
-      "wireguard" = 1451685025;
+     
     };
   };
 
