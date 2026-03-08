@@ -4,9 +4,9 @@
   imports = [ ../darwin ];
 
   homebrew.casks = [
-    "docker"
+    "docker-desktop"
     "whatsapp"
-    "google-cloud-sdk"
+    "gcloud-cli"
     "betterdisplay"
     "lulu"
     "plex"
