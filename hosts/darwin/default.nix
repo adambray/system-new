@@ -17,18 +17,12 @@ let user = "adambray"; in
   # Setup user, packages, programs
   nix = {
     package = pkgs.nix;
-#    settings.trusted-users = [ "@admin" "${user}" ];
-#    gc = {
-#      user = "root";
-#      automatic = true;
-#      interval = { Weekday = 0; Hour = 2; Minute = 0; };
-#      options = "--delete-older-than 30d";
-#    };
-#
-#    # Turn this on to make command line easier
-#    extraOptions = ''
-#      experimental-features = nix-command flakes
-#    '';
+    gc = {
+      user = "root";
+      automatic = true;
+      interval = { Weekday = 0; Hour = 2; Minute = 0; };
+      options = "--delete-older-than 30d";
+    };
   };
 
   # Load configuration that is shared across systems
