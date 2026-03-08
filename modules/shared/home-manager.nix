@@ -57,11 +57,6 @@ let name = "Adam Bray";
       # Some MO repos use this env var to enable flakes via direnv
       export AUTO_ENABLE_FLAKES=true
 
-      # nix shortcuts
-      shell() {
-          nix-shell '<nixpkgs>' -A "$1"
-      }
-
       eval "$(fasd --init auto)"
 
       # Always color ls and group directories
