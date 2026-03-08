@@ -8,6 +8,7 @@ _:
   "warp"
   "intellij-idea"
   "cursor"
+  "zed"
 
   # Communication Tools
   "notion"
