@@ -28,7 +28,7 @@ with pkgs; [
   wget
   # zip
   sqlcmd
-  fasd
+  zoxide
   gh
   nix-prefetch-git
 

@@ -54,10 +54,7 @@ let name = "Adam Bray";
 
       export EDITOR=zed
 
-      # Some MO repos use this env var to enable flakes via direnv
-      export AUTO_ENABLE_FLAKES=true
-
-      eval "$(fasd --init auto)"
+      eval "$(zoxide init zsh)"
 
       # Always color ls and group directories
       alias ls='ls --color=auto'
@@ -228,7 +225,7 @@ let name = "Adam Bray";
     # escapeTime = 10;
     # historyLimit = 50000;
     extraConfig = ''
-        set-option -g default-shell /Users/adambray/.nix-profile/bin/zsh
+        set-option -g default-shell ${pkgs.zsh}/bin/zsh
         # Some tweaks to the status line
         set -g status-right "%b %d %Y | %l:%M %p"
         set -g status-justify centre
