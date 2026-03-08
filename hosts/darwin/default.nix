@@ -12,15 +12,7 @@ let user = "adambray"; in
 
   nixpkgs.config.allowUnfree = true;
 
-  # Setup user, packages, programs
-  nix = {
-    package = pkgs.nix;
-    gc = {
-      automatic = true;
-      interval = { Weekday = 0; Hour = 2; Minute = 0; };
-      options = "--delete-older-than 30d";
-    };
-  };
+  nix.enable = false;
 
   # Load configuration that is shared across systems
   environment.systemPackages = with pkgs; [
