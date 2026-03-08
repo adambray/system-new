@@ -32,14 +32,7 @@ _:
 
   # Browsers
   "firefox"
-  "google-chrome"
   "finicky"
-
-  # Work
-  "amazon-workspaces"
-  "hex-fiend"
-  "tandem"
-  "tuple"
 
   # Games
 #  "streetpea/streetpea/chiaki-ng"

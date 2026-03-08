@@ -78,31 +78,42 @@
       devShells = forAllSystems devShell;
       apps = nixpkgs.lib.genAttrs linuxSystems mkLinuxApps // nixpkgs.lib.genAttrs darwinSystems mkDarwinApps;
 
-      darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
-              darwin.lib.darwinSystem {
-                inherit system;
-                specialArgs = inputs // { inherit user; };
-                modules = [
-                  home-manager.darwinModules.home-manager
-                  nix-homebrew.darwinModules.nix-homebrew
-                  {
-                    nix-homebrew = {
-                      inherit user;
-                      enable = true;
-                      taps = {
-                        "homebrew/homebrew-core" = homebrew-core;
-                        "homebrew/homebrew-cask" = homebrew-cask;
-                        "homebrew/homebrew-bundle" = homebrew-bundle;
-                        "git-duet/homebrew-tap" = git-duet;
-                      };
-                      mutableTaps = false;
-                      autoMigrate = true;
-                    };
-                  }
-                  ./hosts/darwin
-                ];
+      darwinConfigurations =
+        let
+          mkDarwinConfig = { system, hostPath }: darwin.lib.darwinSystem {
+            inherit system;
+            specialArgs = inputs // { inherit user; };
+            modules = [
+              home-manager.darwinModules.home-manager
+              nix-homebrew.darwinModules.nix-homebrew
+              {
+                nix-homebrew = {
+                  inherit user;
+                  enable = true;
+                  taps = {
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                    "homebrew/homebrew-bundle" = homebrew-bundle;
+                    "git-duet/homebrew-tap" = git-duet;
+                  };
+                  mutableTaps = false;
+                  autoMigrate = true;
+                };
               }
-            );
+              hostPath
+            ];
+          };
+        in
+        {
+          "midnight-air" = mkDarwinConfig {
+            system = "aarch64-darwin";
+            hostPath = ./hosts/personal;
+          };
+          "adams-work-macbook-pro" = mkDarwinConfig {
+            system = "aarch64-darwin";
+            hostPath = ./hosts/work;
+          };
+        };
 
       nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system: nixpkgs.lib.nixosSystem {
         inherit system;
