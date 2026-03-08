@@ -71,7 +71,6 @@ let name = "Adam Bray";
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
-      theme = "miloshadzic";
     };
   };
 
