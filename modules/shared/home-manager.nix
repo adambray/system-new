@@ -52,11 +52,11 @@ let name = "Adam Bray";
       export PATH="/Applications/Webstorm.app/Contents/MacOS":$PATH
       export PATH=$GOPATH/bin:$PATH
 
-      export EDITOR=nvim
+      export EDITOR=zed
 
       # Some MO repos use this env var to enable flakes via direnv
       export AUTO_ENABLE_FLAKES=true
-      
+
       # nix shortcuts
       shell() {
           nix-shell '<nixpkgs>' -A "$1"
@@ -67,7 +67,7 @@ let name = "Adam Bray";
       # Always color ls and group directories
       alias ls='ls --color=auto'
     '';
-    
+
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
@@ -183,12 +183,6 @@ let name = "Adam Bray";
         };
       };
     };
-  };
-
-  neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
   };
 
   ssh = {
