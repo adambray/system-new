@@ -7,5 +7,9 @@
     "docker"
     "whatsapp"
     "google-cloud-sdk"
+    "betterdisplay"
+    "lulu"
+    "plex"
+    "the-unarchiver"
   ];
 }
