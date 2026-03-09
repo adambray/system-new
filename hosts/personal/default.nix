@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 let user = "adambray"; in
 
@@ -26,6 +26,25 @@ let user = "adambray"; in
       }
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    # Kubernetes / GitOps
+    fluxcd
+    talhelper
+    kubernetes-helm
+    helmfile
+    kustomize
+    stern
+    kubectx
+    velero
+
+    # Secrets
+    sops
+    age
+
+    # Storage / infra
+    minio-client
+  ];
 
   homebrew.casks = [
     "docker-desktop"
