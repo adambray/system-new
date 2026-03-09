@@ -12,7 +12,6 @@ _:
 
   # Communication Tools
   "notion"
-  "slack"
   "zoom"
 
   # Entertainment Tools
