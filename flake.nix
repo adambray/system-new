@@ -109,7 +109,7 @@
             system = "aarch64-darwin";
             hostPath = ./hosts/personal;
           };
-          "adams-work-macbook-pro" = mkDarwinConfig {
+          "adams-work-mbp" = mkDarwinConfig {
             system = "aarch64-darwin";
             hostPath = ./hosts/work;
           };
