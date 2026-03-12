@@ -2,6 +2,7 @@
 
 with pkgs; [
   # General packages for development and system management
+  ansible
   aspell
   aspellDicts.en
   bash-completion
