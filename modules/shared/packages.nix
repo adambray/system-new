@@ -22,6 +22,7 @@ with pkgs; [
   # openssh
   # packer
   rustup
+  opentofu
   terraform
   talosctl
   # sqlite
