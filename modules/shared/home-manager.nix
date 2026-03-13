@@ -54,6 +54,7 @@ let name = "Adam Bray";
       export PATH=$HOME/.cargo/bin:$PATH
 
       export EDITOR=zed
+      export SOPS_AGE_KEY_FILE=~/.config/sops/age/keys.txt
 
       eval "$(zoxide init zsh)"
 
