@@ -17,6 +17,9 @@ _:
   # Entertainment Tools
   "vlc"
 
+  # AI Tools
+  "superwhisper"
+
   # Productivity Tools
   "bettertouchtool"
   "disk-inventory-x"
