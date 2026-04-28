@@ -57,6 +57,9 @@ with pkgs; [
   # nodePackages.prettier
   # nodejs
 
+  # AI Tools
+  gemini-cli
+
   # Text and terminal utilities
   htop
   # hunspell

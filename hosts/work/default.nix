@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 let user = "adambray"; in
 
@@ -30,6 +30,15 @@ let user = "adambray"; in
     ];
   };
 
+  # TODO: move to a work-specific packages.nix if that gets created
+  home-manager.users.${user}.home = {
+    packages = [ pkgs.teleport_17 ];
+    sessionVariables = {
+      TELEPORT_PROXY = "teleport.platform.mechanical.run";
+      TELEPORT_ADD_KEYS_TO_AGENT = "no";
+    };
+  };
+
   homebrew.brews = [
     "azure-cli"
     "git-duet/tap/git-duet"
@@ -39,6 +48,7 @@ let user = "adambray"; in
 
   homebrew.casks = [
     "amazon-workspaces"
+    "gcloud-cli"
     "hex-fiend"
     "tandem"
     "tuple"

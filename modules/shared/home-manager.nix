@@ -51,6 +51,7 @@ let name = "Adam Bray";
       export PATH="/Applications/Rider.app/Contents/MacOS":$PATH
       export PATH="/Applications/Webstorm.app/Contents/MacOS":$PATH
       export PATH=$GOPATH/bin:$PATH
+      export PATH=$HOME/.cargo/bin:$PATH
 
       export EDITOR=zed
 
