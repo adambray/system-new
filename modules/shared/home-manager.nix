@@ -24,7 +24,7 @@ let name = "Adam Bray";
       {
         update = ''
           cd ~/workspace/system-new/ \
-            && rm ~/.ssh/config \
+            && rm -f ~/.ssh/config \
             && nix run .#build-switch \
             && exec $SHELL
         '';

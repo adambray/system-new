@@ -51,7 +51,6 @@ let user = "adambray"; in
     "whatsapp"
     "gcloud-cli"
     "betterdisplay"
-    "lulu"
     "plex"
     "the-unarchiver"
   ];
