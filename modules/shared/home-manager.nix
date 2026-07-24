@@ -181,18 +181,14 @@ let name = "Adam Bray";
   ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks."*".controlPath = "none";
-    matchBlocks."github.com" = {
-      extraOptions = {
-        IdentityAgent = "~/.1password/agent.sock";
-      };
+    settings."*".ControlPath = "none";
+    settings."github.com" = {
+      IdentityAgent = "~/.1password/agent.sock";
     };
-    matchBlocks."workstation" = {
-      hostname = "192.168.1.246";
-      user = "adam";
-      extraOptions = {
-        IdentityAgent = "~/.1password/agent.sock";
-      };
+    settings."workstation" = {
+      HostName = "192.168.1.246";
+      User = "adam";
+      IdentityAgent = "~/.1password/agent.sock";
     };
   };
 
