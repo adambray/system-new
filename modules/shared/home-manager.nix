@@ -187,6 +187,13 @@ let name = "Adam Bray";
         IdentityAgent = "~/.1password/agent.sock";
       };
     };
+    matchBlocks."workstation" = {
+      hostname = "192.168.1.246";
+      user = "adam";
+      extraOptions = {
+        IdentityAgent = "~/.1password/agent.sock";
+      };
+    };
   };
 
   tmux = {
