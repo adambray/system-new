@@ -27,13 +27,9 @@
         url = "github:git-duet/homebrew-tap";
         flake = false;
     };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, git-duet, home-manager, nixpkgs, disko } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, git-duet, home-manager, nixpkgs } @inputs:
     let
       user = "adambray";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -59,11 +55,14 @@
       mkLinuxApps = system: {
         "apply" = mkApp "apply" system;
         "build-switch" = mkApp "build-switch" system;
-        "copy-keys" = mkApp "copy-keys" system;
-        "create-keys" = mkApp "create-keys" system;
-        "check-keys" = mkApp "check-keys" system;
-        "install" = mkApp "install" system;
       };
+      overlays =
+        # Apply each overlay found in the /overlays directory
+        let path = ./overlays; in with builtins;
+        map (n: import (path + ("/" + n)))
+            (filter (n: match ".*\\.nix" n != null ||
+                        pathExists (path + ("/" + n + "/default.nix")))
+                    (attrNames (readDir path)));
       mkDarwinApps = system: {
         "apply" = mkApp "apply" system;
         "build" = mkApp "build" system;
@@ -115,20 +114,23 @@
           };
         };
 
-      nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system: nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = inputs;
-        modules = [
-          disko.nixosModules.disko
-          home-manager.nixosModules.home-manager {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.${user} = import ./modules/nixos/home-manager.nix;
+      # Plain (non-NixOS) Linux machines, managed with standalone home-manager
+      # instead of a full system flake — see modules/linux/README.md.
+      homeConfigurations =
+        let
+          mkHomeConfig = { system, hostPath }: home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs {
+              inherit system overlays;
+              config.allowUnfree = true;
             };
-          }
-          ./hosts/nixos
-        ];
-     });
-  };
+            modules = [ hostPath ];
+          };
+        in
+        {
+          "debian-work-nix" = mkHomeConfig {
+            system = "x86_64-linux";
+            hostPath = ./hosts/linux/work;
+          };
+        };
+    };
 }

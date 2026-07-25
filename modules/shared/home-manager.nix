@@ -100,9 +100,10 @@ let name = "Adam Bray";
       pull.rebase = true;
       rebase.autoStash = true;
       gpg = { format = "ssh"; };
-      "gpg \"ssh\"" = lib.mkIf pkgs.stdenv.isDarwin {
-        program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-      };
+      "gpg \"ssh\"".program = lib.mkMerge [
+        (lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign")
+        (lib.mkIf pkgs.stdenv.isLinux "/opt/1Password/op-ssh-sign")
+      ];
     };
   };
 
