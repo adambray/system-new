@@ -191,6 +191,22 @@ let name = "Adam Bray";
       User = "adam";
       IdentityAgent = "~/.1password/agent.sock";
     };
+    settings."homeassistant" = lib.mkMerge [
+      {
+        HostName = "192.168.1.73";
+        Port = 2222;
+        User = "root";
+      }
+      # Linux side already has a dedicated key authorized on the add-on.
+      (lib.mkIf pkgs.stdenv.isLinux {
+        IdentityFile = "~/.ssh/ha_config_ed25519";
+        IdentitiesOnly = true;
+      })
+      # Mac side uses a key stored in 1Password instead of a file on disk.
+      (lib.mkIf pkgs.stdenv.isDarwin {
+        IdentityAgent = "~/.1password/agent.sock";
+      })
+    ];
   };
 
   tmux = {
