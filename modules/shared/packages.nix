@@ -42,6 +42,7 @@ with pkgs; [
   # Encryption and security tools
   age
   # age-plugin-yubikey
+  gitleaks
   gnupg
   # libfido2
 
