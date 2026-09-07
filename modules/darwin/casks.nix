@@ -6,7 +6,6 @@ _:
   "1password"
   "iterm2"
   "warp"
-  "intellij-idea"
   "cursor"
   "zed"
 
