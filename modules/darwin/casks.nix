@@ -26,7 +26,6 @@ _:
   "rectangle"
   "scroll-reverser"
   "flycut"
-  "google-chrome"
   "hyperkey"
   "keepingyouawake"
   "keycastr"
