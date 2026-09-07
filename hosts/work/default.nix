@@ -50,6 +50,7 @@ let user = "adambray"; in
     "amazon-workspaces"
     "gcloud-cli"
     "hex-fiend"
+    "slack"
     "tandem"
     "tuple"
   ];
