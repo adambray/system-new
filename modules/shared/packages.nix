@@ -25,6 +25,12 @@ with pkgs; [
   opentofu
   terraform
   talosctl
+  # homelab: k8s + talos + secrets tooling
+  sops
+  fluxcd
+  talhelper
+  kubernetes-helm
+  kustomize
   # sqlite
   watch
   wget
@@ -35,7 +41,7 @@ with pkgs; [
   nix-prefetch-git
 
   # Encryption and security tools
-  # age
+  age
   # age-plugin-yubikey
   gnupg
   # libfido2
