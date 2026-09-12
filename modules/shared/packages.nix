@@ -23,7 +23,6 @@ with pkgs; [
   # packer
   rustup
   opentofu
-  terraform
   talosctl
   # homelab: k8s + talos + secrets tooling
   sops

@@ -2,7 +2,8 @@
 
 let name = "Adam Bray";
     user = "adambray";
-    email = "adam.bray@gmail.com"; in
+    email = "adam.bray@gmail.com";
+    sshSigningPubKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDYPlWUM3LaYEP8hKUWCaixu6X+yNq96v1YIC9Diu+M2"; in
 {
   # Shared shell configuration
   zsh = {
@@ -74,7 +75,13 @@ let name = "Adam Bray";
       enable = true;
     };
     signing = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDYPlWUM3LaYEP8hKUWCaixu6X+yNq96v1YIC9Diu+M2";
+      # On Darwin, op-ssh-sign talks to the running 1Password app/agent, so
+      # the raw public key is enough. On headless Linux there's no agent, so
+      # point ssh-keygen straight at the private key file instead.
+      key =
+        if pkgs.stdenv.isLinux
+        then "~/.ssh/id_ed25519"
+        else sshSigningPubKey;
       signByDefault = true;
     };
 
@@ -102,8 +109,11 @@ let name = "Adam Bray";
       gpg = { format = "ssh"; };
       "gpg \"ssh\"".program = lib.mkMerge [
         (lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign")
-        (lib.mkIf pkgs.stdenv.isLinux "/opt/1Password/op-ssh-sign")
+        # Linux boxes here are headless (no 1Password desktop app), so sign
+        # with plain ssh-keygen against the on-disk key instead of op-ssh-sign.
+        (lib.mkIf pkgs.stdenv.isLinux "${pkgs.openssh}/bin/ssh-keygen")
       ];
+      "gpg \"ssh\"".allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
     };
   };
 
