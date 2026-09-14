@@ -8,6 +8,7 @@ with pkgs; [
   bash-completion
   bat
   btop
+  cachix
   exiftool
   # codespell
   coreutils
