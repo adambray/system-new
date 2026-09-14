@@ -21,7 +21,6 @@ _:
 
   # Productivity Tools
   "bettertouchtool"
-  "disk-inventory-x"
   "rectangle"
   "scroll-reverser"
   "flycut"
