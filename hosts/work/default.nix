@@ -49,6 +49,7 @@ let user = "adambray"; in
   homebrew.casks = [
     "amazon-workspaces"
     "gcloud-cli"
+    "google-chrome"
     "hex-fiend"
     "intellij-idea"
     "slack"

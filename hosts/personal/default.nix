@@ -11,7 +11,6 @@ let user = "adambray"; in
     entries  = [
       { path = "/Applications/Firefox.app/"; }
       { path = "/Applications/Messages.app/"; }
-      { path = "/Applications/Google Chrome.app/"; }
       { path = "/Applications/iTerm.app/"; }
       { path = "/Applications/Notion.app/"; }
       {
