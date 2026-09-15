@@ -79,7 +79,7 @@ let name = "Adam Bray";
       # the raw public key is enough. On headless Linux there's no agent, so
       # point ssh-keygen straight at the private key file instead.
       key =
-        if pkgs.stdenv.isLinux
+        if pkgs.stdenv.hostPlatform.isLinux
         then "~/.ssh/id_ed25519"
         else sshSigningPubKey;
       signByDefault = true;
@@ -108,10 +108,10 @@ let name = "Adam Bray";
       rebase.autoStash = true;
       gpg = { format = "ssh"; };
       "gpg \"ssh\"".program = lib.mkMerge [
-        (lib.mkIf pkgs.stdenv.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign")
+        (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "/Applications/1Password.app/Contents/MacOS/op-ssh-sign")
         # Linux boxes here are headless (no 1Password desktop app), so sign
         # with plain ssh-keygen against the on-disk key instead of op-ssh-sign.
-        (lib.mkIf pkgs.stdenv.isLinux "${pkgs.openssh}/bin/ssh-keygen")
+        (lib.mkIf pkgs.stdenv.hostPlatform.isLinux "${pkgs.openssh}/bin/ssh-keygen")
       ];
       "gpg \"ssh\"".allowedSignersFile = "${config.home.homeDirectory}/.ssh/allowed_signers";
     };
@@ -208,12 +208,12 @@ let name = "Adam Bray";
         User = "root";
       }
       # Linux side already has a dedicated key authorized on the add-on.
-      (lib.mkIf pkgs.stdenv.isLinux {
+      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         IdentityFile = "~/.ssh/ha_config_ed25519";
         IdentitiesOnly = true;
       })
       # Mac side uses a key stored in 1Password instead of a file on disk.
-      (lib.mkIf pkgs.stdenv.isDarwin {
+      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
         IdentityAgent = "~/.1password/agent.sock";
       })
     ];
