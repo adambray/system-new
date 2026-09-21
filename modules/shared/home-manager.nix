@@ -22,13 +22,24 @@ let name = "Adam Bray";
       }
     ];
     shellAliases =
+      let
+        updateSteps = [
+          "cd ~/workspace/system-new/"
+          "rm -f ~/.ssh/config"
+          "nix run .#build-switch"
+        ]
+        # `brew bundle` upgrades the formulae and casks we declare, but never
+        # their transitive dependencies, so sweep those separately. The tap is
+        # pinned by flake.lock, so this can only ever move to versions the
+        # current pin offers -- it cannot drift away from the declared state.
+        ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [
+          "brew upgrade"
+          "brew cleanup"
+        ]
+        ++ [ "exec $SHELL" ];
+      in
       {
-        update = ''
-          cd ~/workspace/system-new/ \
-            && rm -f ~/.ssh/config \
-            && nix run .#build-switch \
-            && exec $SHELL
-        '';
+        update = lib.concatStringsSep " && " updateSteps;
       };
     profileExtra = ''eval "$(/opt/homebrew/bin/brew shellenv)"'';
     initContent = lib.mkBefore ''
