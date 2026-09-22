@@ -5,8 +5,6 @@ _:
   "1password-cli"
   "1password"
   "iterm2"
-  "warp"
-  "cursor"
   "zed"
 
   # Communication Tools
