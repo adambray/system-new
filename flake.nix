@@ -23,13 +23,9 @@
       url = "github:homebrew/homebrew-cask";
       flake = false;
     };
-    git-duet = {
-        url = "github:git-duet/homebrew-tap";
-        flake = false;
-    };
   };
 
-  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, git-duet, home-manager, nixpkgs } @inputs:
+  outputs = { self, darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs } @inputs:
     let
       user = "adambray";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -93,7 +89,6 @@
                     "homebrew/homebrew-core" = homebrew-core;
                     "homebrew/homebrew-cask" = homebrew-cask;
                     "homebrew/homebrew-bundle" = homebrew-bundle;
-                    "git-duet/homebrew-tap" = git-duet;
                   };
                   mutableTaps = false;
                   autoMigrate = true;

@@ -38,22 +38,6 @@
         "type": "github"
       }
     },
-    "git-duet": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1701915882,
-        "narHash": "sha256-PBfjm11+B6pzb2eSoluKcSTwsh8/1drKUEX+81pXYB0=",
-        "owner": "git-duet",
-        "repo": "homebrew-tap",
-        "rev": "f5917388b138ef212fc2a787bfb405360a1fa00e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "git-duet",
-        "repo": "homebrew-tap",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -170,7 +154,6 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
-        "git-duet": "git-duet",
         "home-manager": "home-manager",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",

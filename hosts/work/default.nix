@@ -39,13 +39,6 @@ let user = "adambray"; in
     };
   };
 
-  homebrew.brews = [
-    "azure-cli"
-    "git-duet/tap/git-duet"
-    "pdm"
-    "gnucobol"
-  ];
-
   homebrew.casks = [
     "amazon-workspaces"
     "gcloud-cli"
