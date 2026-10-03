@@ -32,7 +32,7 @@ let user = "adambray"; in
 
   # TODO: move to a work-specific packages.nix if that gets created
   home-manager.users.${user}.home = {
-    packages = [ pkgs.teleport_17 pkgs.fly ];
+    packages = [ pkgs.teleport_17 pkgs.fly-work ];
     sessionVariables = {
       TELEPORT_PROXY = "teleport.platform.mechanical.run";
       TELEPORT_ADD_KEYS_TO_AGENT = "no";

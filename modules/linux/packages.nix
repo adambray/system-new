@@ -18,6 +18,9 @@ shared-packages ++ [
   # homelab k8s cluster.
   uv
 
+  # Concourse CLI, pinned to the homelab server's version (overlays/30-fly-pin.nix)
+  fly-homelab
+
   # 3D printing slicer (unfree; allowUnfree is set in flake.nix for
   # homeConfigurations)
   # bambu-studio  # TEMP disabled 2026-09-10: source build fails in this nixpkgs rev, no cached binary. Re-add when fixed, or use flatpak/AppImage.
