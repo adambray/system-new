@@ -11,7 +11,16 @@ in
 
   home.file = shared-files;
 
-  programs = shared-programs;
+  programs = lib.recursiveUpdate shared-programs {
+    # Claude Code sessions get the homelab 1Password service account (Homelab
+    # vault only). .zshenv, because Claude's shells are non-interactive. Gated
+    # on CLAUDECODE so `op` in your own shells keeps the personal account.
+    zsh.envExtra = ''
+      if [[ -n "$CLAUDECODE" && -r ~/.config/op/homelab-sa-token ]]; then
+        export OP_SERVICE_ACCOUNT_TOKEN="$(<~/.config/op/homelab-sa-token)"
+      fi
+    '';
+  };
 
   fonts.fontconfig.enable = true;
 }
