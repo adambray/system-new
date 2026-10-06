@@ -212,6 +212,18 @@ let name = "Adam Bray";
       User = "adam";
       IdentityAgent = "~/.1password/agent.sock";
     };
+    # adams-macbook-server (hosts/server): the always-on Mac running
+    # family-agent's BlueBubbles + Reminders helper.
+    settings."macbook-server" = {
+      HostName = "adams-macbook-server.local";
+      User = "adambray";
+      IdentityAgent = "~/.1password/agent.sock";
+    };
+    settings."macbook-server-agent" = {
+      HostName = "adams-macbook-server.local";
+      User = "familyagent";
+      IdentityAgent = "~/.1password/agent.sock";
+    };
     settings."homeassistant" = lib.mkMerge [
       {
         HostName = "192.168.1.73";
