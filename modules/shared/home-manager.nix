@@ -59,7 +59,6 @@ let name = "Adam Bray";
       export PATH=$HOME/.local/share/bin:$PATH
       export PATH=$HOME/Library/Python/3.9/bin:$PATH
       export PATH=$HOME/.local/bin:$PATH
-      export PATH="/Applications/IntelliJ IDEA.app/Contents/MacOS":$PATH
       export PATH="/Applications/Rider.app/Contents/MacOS":$PATH
       export PATH="/Applications/Webstorm.app/Contents/MacOS":$PATH
       export PATH=$GOPATH/bin:$PATH

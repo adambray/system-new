@@ -16,7 +16,6 @@ let user = "adambray"; in
       { path = "/Applications/iTerm.app/"; }
       { path = "/Applications/Notion.app/"; }
       { path = "/Applications/1Password.app/"; }
-      { path = "/Applications/IntelliJ IDEA.app/"; }
       {
         path = "${config.users.users.${user}.home}/Downloads";
         section = "others";
@@ -44,7 +43,6 @@ let user = "adambray"; in
     "gcloud-cli"
     "google-chrome"
     "hex-fiend"
-    "intellij-idea"
     "slack"
     "tandem"
     "tuple"
